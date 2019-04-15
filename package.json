@@ -1,0 +1,27 @@
+{
+  "name": "oreon-scraper",
+  "version": "1.0.0",
+  "description": "lib scraper with extended utilities",
+  "main": "src/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.4",
+    "tape": "^4.10.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ululajib/oreon-scraper.git"
+  },
+  "author": "ululalbab",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ululajib/oreon-scraper/issues"
+  },
+  "homepage": "https://github.com/ululajib/oreon-scraper#readme"
+}
