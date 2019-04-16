@@ -122,7 +122,7 @@ function parserResponse(res, cookie_obj, req_url) {
     else body.push(item);
   });
   body = str_clean(array_clean(body).join('\n'));
-
+  const status = Number(headers.split('\r\n')[0].split(' ')[1]);
   let headers_obj = headers_to_object(headers);
   if(cookie_obj) {
     cookie_obj = append(cookie_to_object(cookie_obj), cookie_to_object(get_cookie(headers_obj)))
@@ -132,6 +132,7 @@ function parserResponse(res, cookie_obj, req_url) {
   return {
     headers,
     headers_obj,
+    status,
     cookie,
     cookie_obj,
     body,
