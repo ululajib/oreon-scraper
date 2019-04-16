@@ -33,7 +33,6 @@ function initialize(options = {}) {
 function request(options = {}) {
   if (!options.cookie) options.cookie = '';
   if (!options.url) options.url = '';
-  console.log(options);
   const command = this.setUpRequest(options)
 
   return new Promise((resolve, reject) => {
@@ -129,7 +128,15 @@ function parserResponse(res, cookie_obj, req_url) {
     cookie_obj = append(cookie_to_object(cookie_obj), cookie_to_object(get_cookie(headers_obj)))
   } else cookie_obj = cookie_to_object(get_cookie(headers_obj));
   let cookie = obj_to_cookie(cookie_obj);
-  return {headers, headers_obj, cookie, cookie_obj, body, req_url};
+
+  return {
+    headers,
+    headers_obj,
+    cookie,
+    cookie_obj,
+    body,
+    requestUrl: req_url
+  };
 }
 
 function str_clean(str) {
