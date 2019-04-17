@@ -1,8 +1,11 @@
 const {exec} = require('child_process')
 const Promise = require('bluebird')
+const path = require('path');
+const fs = Promise.promisifyAll(require('fs-extra'));
 const utils = require('./utils')
 const prototypes = {
   request,
+  saveFile,
   setUpRequest,
 }
 function Oreon(options = {}) {
@@ -14,6 +17,8 @@ module.exports = Oreon
 
 function initialize(options = {}) {
   const {
+    host = '',
+    uri = '',
     userAgent = '',
     type = 'unknown',
     capture = false,
@@ -22,6 +27,8 @@ function initialize(options = {}) {
 
   const initialProperties = {
     type,
+    uri,
+    host,
     capture,
     capturePath,
     userAgent,
@@ -50,6 +57,24 @@ function request(options = {}) {
       resolve(output)
     })
   })
+}
+
+function saveFile(name, options = {}) {
+  const {
+    currentUrl = this.uri,
+    ext = 'html',
+    encoding = 'utf8',
+    convertAbsolute = false,
+    transform,
+  } = options;
+  if (!this.capture) {
+    return Promise.resolve();
+  }
+  const filepath = path.resolve(this.capturePath, 'capture', `${this.type}/${name}.${ext}`);
+  return (text) => {
+    text = transform ? transform(text) : text;
+    return fs.outputFileAsync(filepath, text, encoding);
+  }
 }
 
 function setUpRequest(options) {
