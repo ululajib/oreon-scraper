@@ -1,4 +1,4 @@
-<big><h1 align="center">http-scraper</h1></big>
+<big><h1 align="center">oreon-scraper</h1></big>
 
 
 <p align="center">
@@ -9,18 +9,18 @@
 
 lib scraper with extended utilities
 
-## ( during manufacture )
+## ( still developing )
 
 ## Usage
 
 ```js
 
-import Http from "oreon-scraper"
+import Oreon from "oreon-scraper"
 
 const options = {
   host: 'api.ipify.org',
   uri: 'https://api.ipify.org',
-  userAgent,
+  userAgent: '',
 }
 const oreon = Oreon(options)
 const url = 'https://api.ipify.org?format=json'
@@ -40,3 +40,4 @@ For more usage information, check tests directory.
 ## License
 
 MIT © [Ulul Ajib](http://github.com/ululajib)
+Reference form [http-scraper](https://github.com/raabbajam/http-scraper)
