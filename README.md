@@ -9,7 +9,7 @@
 
 lib scraper with extended utilities
 
-## ( during manufacture )
+## ( still developing )
 
 ## Usage
 
