@@ -15,7 +15,7 @@ lib scraper with extended utilities
 
 ```js
 
-import Http from "oreon-scraper"
+import Oreon from "oreon-scraper"
 
 const options = {
   host: 'api.ipify.org',
