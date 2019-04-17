@@ -20,7 +20,7 @@ import Oreon from "oreon-scraper"
 const options = {
   host: 'api.ipify.org',
   uri: 'https://api.ipify.org',
-  userAgent,
+  userAgent: '',
 }
 const oreon = Oreon(options)
 const url = 'https://api.ipify.org?format=json'
