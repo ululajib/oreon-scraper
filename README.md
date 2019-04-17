@@ -40,3 +40,4 @@ For more usage information, check tests directory.
 ## License
 
 MIT © [Ulul Ajib](http://github.com/ululajib)
+Reference form [http-scraper](https://github.com/raabbajam/http-scraper)
