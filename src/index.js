@@ -6,6 +6,8 @@ const utils = require('./utils')
 const prototypes = {
   request,
   saveFile,
+  saveHtml,
+  saveJson,
   setUpRequest,
 }
 function Oreon(options = {}) {
@@ -57,6 +59,17 @@ function request(options = {}) {
       resolve(output)
     })
   })
+}
+
+function saveHtml(name, currentUrl) {
+  const ext = 'html';
+  return this.saveFile(name, {currentUrl, ext});
+}
+
+function saveJson(name, currentUrl) {
+  const ext = 'json';
+  const transform = (text) => typeof text === 'object' ? JSON.stringify(text, null, 2) : text;
+  return this.saveFile(name, {currentUrl, ext, transform});
 }
 
 function saveFile(name, options = {}) {
