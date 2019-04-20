@@ -120,3 +120,24 @@ function getParserCleanBody(body) {
 function getValLocation(location) {
   return location[location.length - 1].replace('Location: ', '');
 }
+
+function append(obj, new_obj) {
+  let output = {};
+  for (let key in new_obj) {
+    if (new_obj.hasOwnProperty(key)) {
+      if(Array.isArray(new_obj[key])) {
+        append(obj[key] , new_obj[key])
+      } else if(typeof new_obj[key] == 'object') {
+        if(obj[key]) {
+          append(obj[key], new_obj[key]);
+        } else {
+          obj[key] = {};
+          append(obj[key], new_obj[key]);
+        }
+      } else {
+        obj[key] = new_obj[key];
+      }
+    }
+  }
+  return obj;
+}
