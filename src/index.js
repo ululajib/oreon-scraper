@@ -133,3 +133,9 @@ function objToPost(post) {
   }
   return output;
 }
+
+function urlEncode(str){
+    str=escape(str);
+    str=str.replace(new RegExp('\\+','g'),'%2B');
+    return str.replace(new RegExp('%20','g'),'+');
+}
