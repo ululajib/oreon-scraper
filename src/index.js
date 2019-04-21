@@ -29,6 +29,8 @@ function initialize(options = {}) {
 
   const initialProperties = {
     type,
+    debugCommand: false,
+    debugResponse: false,
     uri,
     host,
     capture,
@@ -41,10 +43,17 @@ function initialize(options = {}) {
 function request(options = {}) {
   if (!options.cookie) options.cookie = '';
   if (!options.url) options.url = '';
+  this.debugCommand = (options.debugCommand)
+  this.debugResponse = (options.debugResponse)
   const command = this.setUpRequest(options)
-
+  if (this.debugCommand) {
+    console.log(command);
+  }
   return new Promise((resolve, reject) => {
     exec(command, {maxBuffer: 1024 * 5000}, (err, res) => {
+      if (this.debugResponse) {
+        console.log(res);
+      }
       if (err) {
         err = utils.parserErrorExec(err);
         if(err.error != 56) reject(err)

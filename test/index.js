@@ -4,7 +4,7 @@ const Promise = require('bluebird');
 
 const userAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.100 Safari/537.36'
 
-test('Oreon-scraper - request', (assert) => {
+test.only('Oreon-scraper - request', (assert) => {
   assert.plan(1)
   const options = {
     host: 'api.ipify.org',
@@ -13,7 +13,7 @@ test('Oreon-scraper - request', (assert) => {
   }
   const oreon = Oreon(options)
   const url = 'https://api.ipify.org?format=json'
-  oreon.request({url})
+  oreon.request({url, debugResponse: false})
     .then((data) => {
       console.log(data);
       assert.ok(Boolean(1), 'request ok!');
@@ -55,7 +55,7 @@ test('Oreon-scraper - saveHtml', (assert) => {
     .catch(assert.end);
 })
 
-test.only('Oreon-scraper - saveHtml', (assert) => {
+test('Oreon-scraper - saveHtml', (assert) => {
   assert.plan(1)
   const options = {
     capture: true,
